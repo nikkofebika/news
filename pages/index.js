@@ -1,8 +1,12 @@
 import { Fragment } from "react";
-
+import Head from 'next/head'
 export default function Home() {
   return (
     <Fragment>
+      <Head>
+
+        <title>NIKKOFE</title>
+      </Head>
       <div className="container-fluid d-none d-lg-block">
         <div className="row align-items-center bg-dark px-lg-5">
           <div className="col-lg-9">
