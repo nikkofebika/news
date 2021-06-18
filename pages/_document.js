@@ -11,46 +11,60 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <meta charSet="utf-8" />
-          <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-          <meta content="Free HTML Templates" name="keywords" />
-          <meta content="Free HTML Templates" name="description" />
+          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
+          <title>Magazine News</title>
+          <meta name="description" content="" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="manifest" href="site.webmanifest" />
+          <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico" />
 
-          <link href="img/favicon.ico" rel="icon" />
-
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
-            rel="stylesheet"
-          />
-
-          <link
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
-            rel="stylesheet"
-          />
-
-          <link
-            href="lib/owlcarousel/assets/owl.carousel.min.css"
-            rel="stylesheet"
-          />
-
-          <link
-            href="lib/owlcarousel/assets/owl.theme.default.min.css"
-            rel="stylesheet"
-          />
-
-          <link href="css/style.css" rel="stylesheet" />
-
-
+          <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+          <link rel="stylesheet" href="assets/css/owl.carousel.min.css" />
+          <link rel="stylesheet" href="assets/css/slicknav.css" />
+          <link rel="stylesheet" href="assets/css/flaticon.css" />
+          <link rel="stylesheet" href="assets/css/progressbar_barfiller.css" />
+          <link rel="stylesheet" href="assets/css/gijgo.css" />
+          <link rel="stylesheet" href="assets/css/animate.min.css" />
+          <link rel="stylesheet" href="assets/css/animated-headline.css" />
+          <link rel="stylesheet" href="assets/css/magnific-popup.css" />
+          <link rel="stylesheet" href="assets/css/fontawesome-all.min.css" />
+          <link rel="stylesheet" href="assets/css/themify-icons.css" />
+          <link rel="stylesheet" href="assets/css/slick.css" />
+          <link rel="stylesheet" href="assets/css/nice-select.css" />
+          <link rel="stylesheet" href="assets/css/style.css" />
         </Head>
         <body>
           <Main />
           <NextScript />
-          <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-          <script src="lib/easing/easing.min.js"></script>
-          <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-          <script src="js/main.js"></script>
-          <script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="455171707906778b87c4c746-|49" defer=""></script>
+          <script src="assets/js/vendor/modernizr-3.5.0.min.js"></script>
+          <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+          <script src="assets/js/popper.min.js"></script>
+          <script src="assets/js/bootstrap.min.js"></script>
+          <script src="assets/js/jquery.slicknav.min.js"></script>
+
+          <script src="assets/js/owl.carousel.min.js"></script>
+          <script src="assets/js/slick.min.js"></script>
+          <script src="assets/js/wow.min.js"></script>
+          <script src="assets/js/animated.headline.js"></script>
+          <script src="assets/js/jquery.magnific-popup.js"></script>
+
+          <script src="assets/js/gijgo.min.js"></script>
+          <script src="assets/js/jquery.nice-select.min.js"></script>
+          <script src="assets/js/jquery.sticky.js"></script>
+          <script src="assets/js/jquery.barfiller.js"></script>
+
+          <script src="assets/js/jquery.counterup.min.js"></script>
+          <script src="assets/js/waypoints.min.js"></script>
+          <script src="assets/js/jquery.countdown.min.js"></script>
+          <script src="assets/js/hover-direction-snake.min.js"></script>
+
+          <script src="assets/js/contact.js"></script>
+          <script src="assets/js/jquery.form.js"></script>
+          <script src="assets/js/jquery.validate.min.js"></script>
+          <script src="assets/js/jquery.ajaxchimp.min.js"></script>
+
+          <script src="assets/js/plugins.js"></script>
+          <script src="assets/js/main.js"></script>
         </body>
       </Html>
     );
