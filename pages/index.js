@@ -1,10 +1,39 @@
 import { Fragment } from "react";
+import Image from 'next/image'
 import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
-export default function Home() {
+export default function Home(props) {
+  const { articles } = props;
   return (
     <Fragment>
       <main role="main" className="container">
-        <div className="row">
+        <Row>
+          <Col md={8}>
+            {
+              articles.map((article) => {
+                return (
+                  <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div className="col p-4 d-flex flex-column position-static">
+                      <strong className="d-inline-block mb-2 text-primary">
+                        World
+                      </strong>
+                      <h3 className="mb-0">{article.title}</h3>
+                      <div className="mb-1 text-muted">Nov 12</div>
+                      <p className="card-text mb-auto">
+                        This is a wider card with supporting text below as a natural
+                        lead-in to additional content.
+                      </p>
+                    </div>
+                    <div className="col-auto d-none d-lg-block">
+                      <Image src={article.image} width={200} height={200} alt={article.image_caption !== '' ? article.image_caption : article.title} />
+                    </div>
+                  </div>
+                )
+              })
+            }
+          </Col>
+          <Col md={4}>
+            <h1>fe</h1>
+          </Col>
           <div className="col-md-8 blog-main">
             <h3 className="pb-4 mb-4 font-italic border-bottom">
               From the Firehose
@@ -228,8 +257,23 @@ export default function Home() {
               </ol>
             </div>
           </aside>
-        </div>
+        </Row>
       </main>
     </Fragment>
   );
+}
+
+export async function getServerSideProps() {
+  const res = await fetch('http://localhost:4000/v1/articles');
+  const articles = await res.json();
+
+  if (!articles) return {
+    notFound: true
+  }
+
+  return {
+    props: {
+      articles: articles.data
+    }
+  }
 }
