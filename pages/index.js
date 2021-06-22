@@ -1,38 +1,90 @@
 import { Fragment } from "react";
-import Image from 'next/image'
+import Slider from "react-slick";
+import Image from "next/image";
+import Link from "next/link";
 import { Container, Row, Col, Button, Navbar, Nav } from "react-bootstrap";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 export default function Home(props) {
-  const { articles } = props;
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  const { articles, headlines } = props;
   return (
     <Fragment>
       <main role="main" className="container">
         <Row>
           <Col md={8}>
-            {
-              articles.map((article) => {
+            <Slider {...settings}>
+              {headlines.map((headline) => {
                 return (
-                  <div className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div className="col p-4 d-flex flex-column position-static">
-                      <strong className="d-inline-block mb-2 text-primary">
-                        World
-                      </strong>
-                      <h3 className="mb-0">{article.title}</h3>
-                      <div className="mb-1 text-muted">Nov 12</div>
-                      <p className="card-text mb-auto">
-                        This is a wider card with supporting text below as a natural
-                        lead-in to additional content.
+                  <div className="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+                    <div className="col-md-6 px-0">
+                      <Link href={`article/${headline.seo_title}`}>
+                        <h1 className="display-4 font-italic">
+                          {headline.title}
+                        </h1>
+                      </Link>
+                      <p className="lead my-3">
+                        Multiple lines of text that form the lede, informing new
+                        readers quickly and efficiently about what’s most
+                        interesting in this post’s contents.
+                      </p>
+                      <p className="lead mb-0">
+                        <a href="#" className="text-white font-weight-bold">
+                          Continue reading...
+                        </a>
                       </p>
                     </div>
-                    <div className="col-auto d-none d-lg-block">
-                      <Image src={article.image} width={200} height={200} alt={article.image_caption !== '' ? article.image_caption : article.title} />
-                    </div>
                   </div>
-                )
-              })
-            }
+                );
+              })}
+            </Slider>
+            {articles.map((article) => {
+              return (
+                <div
+                  key={article.id}
+                  className="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative"
+                >
+                  <div className="col p-4 d-flex flex-column position-static">
+                    <strong className="d-inline-block mb-2 text-primary">
+                      {article.category_title}
+                    </strong>
+                    <Link href={`article/${article.seo_title}`}>
+                      <h3 className="mb-0">{article.title}</h3>
+                    </Link>
+                    <div className="mb-1 text-muted">
+                      {article.published_at}
+                    </div>
+                    <p className="card-text mb-auto">
+                      This is a wider card with supporting text below as a
+                      natural lead-in to additional content.
+                    </p>
+                  </div>
+                  <div className="col-auto d-none d-lg-block">
+                    <Image
+                      src={article.image}
+                      width={200}
+                      height={200}
+                      alt={
+                        article.image_caption !== ""
+                          ? article.image_caption
+                          : article.title
+                      }
+                    />
+                  </div>
+                </div>
+              );
+            })}
           </Col>
           <Col md={4}>
-            <h1>fe</h1>
+            <h3 className="pb-4 mb-4 font-italic border-bottom">
+              Berita Populer
+            </h3>
           </Col>
           <div className="col-md-8 blog-main">
             <h3 className="pb-4 mb-4 font-italic border-bottom">
@@ -113,65 +165,6 @@ export default function Home(props) {
                 <li>I know you get me so I let my walls come down.</li>
               </ol>
               <p>After a hurricane comes a rainbow.</p>
-            </div>
-
-            <div className="blog-post">
-              <h2 className="blog-post-title">Another blog post</h2>
-              <p className="blog-post-meta">
-                December 23, 2013 by <a href="#">Jacob</a>
-              </p>
-
-              <p>
-                I am ready for the road less traveled. Already{" "}
-                <a href="#">brushing off the dust</a>. Yeah, you're lucky if
-                you're on her plane. I used to bite my tongue and hold my
-                breath. Uh, She’s a beast. I call her Karma (come back). Black
-                ray-bans, you know she's with the band. I can't sleep let's run
-                away and don't ever look back, don't ever look back.
-              </p>
-              <blockquote>
-                <p>
-                  Growing fast into a <strong>bolt of lightning</strong>. Be
-                  careful Try not to lead her on
-                </p>
-              </blockquote>
-              <p>
-                I'm intrigued, for a peek, heard it's fascinating. Oh oh! Wanna
-                be a victim ready for abduction. She's got that international
-                smile, oh yeah, she's got that one international smile. Do you
-                ever feel, feel so paper thin. I’m gon’ put her in a coma.
-                Sun-kissed skin so hot we'll melt your popsicle.
-              </p>
-              <p>
-                This is transcendental, on another level, boy, you're my lucky
-                star.
-              </p>
-            </div>
-
-            <div className="blog-post">
-              <h2 className="blog-post-title">New feature</h2>
-              <p className="blog-post-meta">
-                December 14, 2013 by <a href="#">Chris</a>
-              </p>
-
-              <p>
-                From Tokyo to Mexico, to Rio. Yeah, you take me to utopia. I'm
-                walking on air. We'd make out in your Mustang to Radiohead. I
-                mean the ones, I mean like she's the one. Sun-kissed skin so hot
-                we'll melt your popsicle. Slow cooking pancakes for my boy,
-                still up, still fresh as a Daisy.
-              </p>
-              <ul>
-                <li>I hope you got a healthy appetite.</li>
-                <li>You're never gonna be unsatisfied.</li>
-                <li>Got a motel and built a fort out of sheets.</li>
-              </ul>
-              <p>
-                Don't need apologies. Boy, you're an alien your touch so
-                foreign, it's <em>supernatural</em>, extraterrestrial. Talk
-                about our future like we had a clue. I can feel a phoenix inside
-                of me.
-              </p>
             </div>
 
             <nav className="blog-pagination">
@@ -264,16 +257,23 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps() {
-  const res = await fetch('http://localhost:4000/v1/articles');
+  const res = await fetch("http://localhost:4000/v1/articles");
   const articles = await res.json();
 
-  if (!articles) return {
-    notFound: true
-  }
+  const get_headlines = await fetch(
+    "http://localhost:3000/api/articles/get_headlines"
+  );
+  const headlines = await get_headlines.json();
+
+  if (!articles)
+    return {
+      notFound: true,
+    };
 
   return {
     props: {
-      articles: articles.data
-    }
-  }
+      articles: articles.data,
+      headlines,
+    },
+  };
 }
